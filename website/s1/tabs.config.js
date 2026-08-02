@@ -20,7 +20,6 @@
 //   hasScript / hasStyle - set to false if that tab has no .js/.css file
 
 window.TABS_CONFIG = [
+  { id: "goodbye", label: "Goodbye Season 1", icon: "waving_hand", enabled: true },
   { id: "map", label: "Map", icon: "map", enabled: true },
-  { id: "chat", label: "Chat", icon: "chat_bubble", enabled: true },
-  { id: "analytics", label: "Analytics", icon: "bar_chart", enabled: true },
 ];
