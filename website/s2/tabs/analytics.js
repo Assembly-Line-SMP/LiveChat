@@ -4,7 +4,7 @@ window.TAB_MODULES = window.TAB_MODULES || {};
 (function () {
   const analyticsApiBase = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
     ? "/s2/api"
-    : "https://raspi.kubabin.dev/api/s2";
+    : "https://analytics-api.kubabin.dev";
 
   let loaded = false;
   const chartInstances = {};
