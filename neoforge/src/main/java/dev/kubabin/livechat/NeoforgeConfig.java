@@ -18,6 +18,12 @@ public class NeoforgeConfig
     private static final ModConfigSpec.ConfigValue<String> HOST = BUILDER
             .comment("The host the HTTP server will bind to")
             .define("host", "0.0.0.0");
+    private static final ModConfigSpec.BooleanValue ENABLE_DISCORD_WEBHOOK = BUILDER
+            .comment("Whether to enable sending chat messages to Discord via webhook")
+            .define("enableDiscordWebhook", true);
+    private static final ModConfigSpec.ConfigValue<String> DISCORD_WEBHOOK_URL = BUILDER
+            .comment("The Discord webhook URL to send chat messages to")
+            .define("discordWebhookUrl", "https://discord.com/api/webhooks/your_webhook_url_here");
     static final ModConfigSpec SPEC = BUILDER.build();
     public static int port;
     public static String host;
@@ -26,5 +32,7 @@ public class NeoforgeConfig
     {
         port = PORT.get();
         host = HOST.get();
+        DiscordWebhook.webhook = DISCORD_WEBHOOK_URL.get();
+        DiscordWebhook.enabled = ENABLE_DISCORD_WEBHOOK.get();
     }
 }

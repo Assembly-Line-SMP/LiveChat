@@ -1,5 +1,6 @@
 package dev.kubabin.livechat;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class LiveChatPaper extends JavaPlugin {
@@ -23,12 +24,17 @@ public final class LiveChatPaper extends JavaPlugin {
     }
     @Override
     public void onEnable() {
-        // Log something to test
-        getLogger().info("LiveChatPaper plugin enabled!");
         // Plugin startup logic
         saveDefaultConfig();
         livechat.setGameDir(getServer().getWorldContainer().toPath());
-        livechat.startup(getConfig().getString("http.host"), getConfig().getInt("http.port"), new PaperLogger());
+        FileConfiguration config = getConfig();
+        livechat.startup(
+                config.getString("http.host", "0.0.0.0"),
+                config.getInt("http.port", 8080),
+                new PaperLogger()
+        );
+        DiscordWebhook.enabled = config.getBoolean("discord.enabled", false);
+        DiscordWebhook.webhook = config.getString("discord.url", "");
         getServer().getPluginManager().registerEvents(new LivechatEventsListener(livechat), this);
     }
 

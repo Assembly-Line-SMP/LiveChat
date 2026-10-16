@@ -37,6 +37,8 @@ public class LivechatFabric implements ModInitializer {
         ServerPlayerEvents.LEAVE.register(player -> livechat.onPlayerLeave(player.getScoreboardName()));
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> livechat.onPlayerChat(sender.getScoreboardName(), message.signedContent()));
         livechat.startup(config.host, config.port, logger);
+        DiscordWebhook.enabled = config.enableDiscordWebhook;
+        DiscordWebhook.webhook = config.discordWebhookUrl;
     }
 
 }

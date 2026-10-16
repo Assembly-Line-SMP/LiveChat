@@ -79,6 +79,7 @@ public class LivechatBase {
     public void addMessage(String player, String message) {
         String timestamp = java.time.Clock.systemUTC().instant().toString();
         messageQueue.add(new ChatMessage(player, message, timestamp));
+        DiscordWebhook.asyncSend("<" + player + "> " + message);
         // Limit the queue size
         if (messageQueue.size() > 100) { // Example limit
             messageQueue.removeFirst();

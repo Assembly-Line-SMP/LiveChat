@@ -1,3 +1,6 @@
 http:
   host: "0.0.0.0"
   port: 8080
+discord:
+  enabled: false
+  url: "https://discord.com/api/webhooks/your_webhook_url"
